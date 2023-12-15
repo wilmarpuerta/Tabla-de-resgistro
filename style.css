@@ -55,7 +55,7 @@ select{
     height: 24px;
     font-size: 15px;
 }
-.btn{
+#btn{
     margin-top: 20px;
     padding: 5px;
     width: 100px;

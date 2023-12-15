@@ -24,6 +24,7 @@ function crearTabla() {
   const lastName = document.getElementById("lastName");
   const age = document.getElementById("age");
   const group = document.getElementById("group");
+  const button = document.getElementById("btn");
   
   
   // Condicional para que no almacenar valores vacios
@@ -84,12 +85,13 @@ function crearTabla() {
     fila.appendChild(eliminarCell);
     eliminarCell.append(newBtn2);
 
-    // Agregar la tabla al cuerpo del documento
+    // Agregar la fila a la tabla
 
     tabla.appendChild(fila);
 
     // Cambiar el fondo según su grupo
     
+    function cambioColor(){
     if(group.value == "Jobs"){
       fila.style = "background-color: rgba(95, 240, 240, 0.918);"
     }
@@ -102,6 +104,8 @@ function crearTabla() {
     else if(group.value == "Tesla"){
       fila.style = "background-color: rgba(185, 111, 235, 0.918);"
     }
+  }
+  cambioColor();
 
     // Se vacian los inputs
 
@@ -110,6 +114,8 @@ function crearTabla() {
     age.value = "";
     group.value = "";
 
+    // Agregar la tabla al cuerpo del documento
+    
     document.body.appendChild(tabla);
 
     // Funcion para acceder a la fila segun su id
@@ -139,7 +145,44 @@ function crearTabla() {
           else if(i==3){
             group.value = contenidoTd;
           }
+          // Cambio de funcionalidad del boton
+          button.removeEventListener("click", crearTabla);
+          button.onclick = actualizar;
         }
+
+    // Funcion para actualizar los valores de las filas
+
+    function actualizar(){
+      const updateFila = document.getElementById(idFila);
+      capitalizarPrimeraLetra(name,lastName);
+
+        for (let i = 0; i < updateFila.children.length - 2; i++) {
+          const tdActual = updateFila.children[i];
+    
+          // Agregar el contenido a la celda
+
+          if (i==0){
+            tdActual.innerHTML = name.value;
+            name.value = "";
+          }
+          else if(i==1){
+            tdActual.innerHTML = lastName.value;
+            lastName.value = "";
+          }
+          else if(i==2){
+            tdActual.innerHTML = age.value;
+            age.value = "";
+          }
+          else if(i==3){
+            tdActual.innerHTML = group.value;
+            cambioColor();
+            group.value = "";
+          }
+          // Cambio de funcionalidad del boton
+          button.removeEventListener("click", actualizar);
+          button.onclick = crearTabla;
+        }
+    }
     }
   }
 };
