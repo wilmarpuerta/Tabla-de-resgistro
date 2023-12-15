@@ -66,9 +66,24 @@ function crearTabla() {
     grupoCell.textContent = group.value;
     fila.appendChild(grupoCell);
 
+    // Agregar la tabla al cuerpo del documento
+
     tabla.appendChild(fila);
 
-    // Agregar la tabla al cuerpo del documento
+    // Cambiar el fondo segun su grupo
+    
+    if(group.value == "Jobs"){
+      fila.style = "background-color: rgba(95, 240, 240, 0.918);"
+    }
+    else if(group.value == "Ritchie"){
+      fila.style = "background-color: rgba(95, 240, 124, 0.918);"
+    }
+    else if(group.value == "lovelace"){
+      fila.style = "background-color: rgba(225, 240, 95, 0.918);"
+    }
+    else if(group.value == "Tesla"){
+      fila.style = "background-color: rgba(185, 111, 235, 0.918);"
+    }
 
     document.body.appendChild(tabla);
 
