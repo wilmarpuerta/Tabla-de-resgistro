@@ -179,36 +179,43 @@ function crearTabla() {
         const updateFila = document.getElementById(idFila);
         capitalizarPrimeraLetra(name, lastName);
 
-        for (let i = 0; i < updateFila.children.length - 2; i++) {
-          const tdActual = updateFila.children[i];
-
-          // Agregar el contenido a la celda
-
-          if (i == 0) {
-            tdActual.innerHTML = name.value;
-            name.value = "";
-          }
-          else if (i == 1) {
-            tdActual.innerHTML = lastName.value;
-            lastName.value = "";
-          }
-          else if (i == 2) {
-            tdActual.innerHTML = age.value;
-            age.value = "";
-          }
-          else if (i == 3) {
-            tdActual.innerHTML = group.value;
-            cambioColor();
-            group.value = "";
-          }
-
-          // Cambio de funcionalidad del boton
-          button.removeEventListener("click", actualizar);
-          button.textContent = "Guardar";
-          button.onclick = crearTabla;
-          remove.disabled = false;
-          scroll();
+        if (name.value == "" | lastName.value == "" | age.value == "" | group.value == "") {
+          alert("No dejes campos vacios")
         }
+        else {
+
+          for (let i = 0; i < updateFila.children.length - 2; i++) {
+            const tdActual = updateFila.children[i];
+
+            // Agregar el contenido a la celda
+
+            if (i == 0) {
+              tdActual.innerHTML = name.value;
+              name.value = "";
+            }
+            else if (i == 1) {
+              tdActual.innerHTML = lastName.value;
+              lastName.value = "";
+            }
+            else if (i == 2) {
+              tdActual.innerHTML = age.value;
+              age.value = "";
+            }
+            else if (i == 3) {
+              tdActual.innerHTML = group.value;
+              cambioColor();
+              group.value = "";
+            }
+
+            // Cambio de funcionalidad del boton
+            button.removeEventListener("click", actualizar);
+            button.textContent = "Guardar";
+            button.onclick = crearTabla;
+            remove.disabled = false;
+            scroll();
+          }
+        }
+
       }
     }
     function eliminar() {
