@@ -3,6 +3,7 @@
 const tabla = document.createElement("table");
 const encabezados = ["Nombre", "Apellido", "Edad", "Grupo", "Editar", "Eliminar"];
 const encabezadoRow = document.createElement("tr");
+encabezadoRow.classList.add("encabezados");
 let identificador = 0;
 
 encabezados.forEach(encabezado => {
@@ -12,8 +13,8 @@ encabezados.forEach(encabezado => {
 });
 tabla.appendChild(encabezadoRow);
 
-// Funcion para desplazar la pagina
-function scroll(){
+// Función para desplazar la pagina
+function scroll() {
   const alturaTotal = document.documentElement.scrollHeight;
   window.scrollTo({
     top: alturaTotal,
@@ -29,16 +30,21 @@ function crearTabla() {
   const age = document.getElementById("age");
   const group = document.getElementById("group");
   const button = document.getElementById("btn");
-  
-  
+
   // Condicional para que no almacenar valores vacios
-  
+
   if (name.value == "" | lastName.value == "" | age.value == "" | group.value == "") {
     alert("No dejes campos vacios")
   }
   else {
 
-    scroll();
+    // Se comprueba si el encabezado esta oculto
+    const visible = window.getComputedStyle(tabla).display;
+    if (visible == "none") {
+      tabla.style.display = "table";
+    }
+
+
 
     // Funcion para poner la primera letra en mayusculas
 
@@ -79,7 +85,7 @@ function crearTabla() {
     const editarCell = document.createElement("td");
     const edit = document.createElement("button");
     edit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 256 256"><path fill="#ffffff" d="m230.15 70.54l-44.69-44.68a20 20 0 0 0-28.28 0L33.86 149.17A19.86 19.86 0 0 0 28 163.31V208a20 20 0 0 0 20 20h168a12 12 0 0 0 0-24h-91L230.15 98.83a20 20 0 0 0 0-28.29ZM136 81l11 11l-71 71l-11-11ZM52 204v-31l15.52 15.51L83 204Zm52-13l-11-11l71-71l11 11Zm88-88l-39-39l18.34-18.34l39 39Z"/></svg>`;
-    edit.classList="btnEdit";
+    edit.classList = "btnEdit";
     edit.onclick = editar;
     fila.appendChild(editarCell);
     editarCell.append(edit);
@@ -110,7 +116,7 @@ function crearTabla() {
         fila.style = "background-color: #cafcb1;"
       }
       else if (group.value == "Tesla") {
-        fila.style = "background-color: 032;"
+        fila.style = "background-color: #ffcdb8;"
       }
     }
     cambioColor();
@@ -134,7 +140,7 @@ function crearTabla() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
-    });
+      });
       const editarFila = document.getElementById(idFila);
 
       // Recorrer los td de la fila, excluyendo los dos últimos
@@ -162,7 +168,9 @@ function crearTabla() {
 
         // Cambio de funcionalidad del boton
         button.removeEventListener("click", crearTabla);
+        button.textContent = "Actualizar";
         button.onclick = actualizar;
+        remove.disabled = true;
       }
 
       // Funcion para actualizar los valores de las filas
@@ -193,28 +201,28 @@ function crearTabla() {
             cambioColor();
             group.value = "";
           }
-          
+
           // Cambio de funcionalidad del boton
           button.removeEventListener("click", actualizar);
+          button.textContent = "Guardar";
           button.onclick = crearTabla;
+          remove.disabled = false;
           scroll();
         }
       }
     }
     function eliminar() {
-      const eliminarFila = document.getElementById(idFila);
       const confirmacion = confirm("Estas seguro de eliminar la fila?");
 
       if (confirmacion == true) {
         tabla.removeChild(fila);
 
         if (tabla.childElementCount < 2) {
-          encabezadoRow.style.display = "none";
+          tabla.style.display = "none";
         }
-        console.log(tabla.childElementCount);
       }
-
     }
+    scroll();
   }
 };
 

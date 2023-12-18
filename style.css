@@ -1,38 +1,57 @@
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+  background-image: url("https://cdn.pixabay.com/photo/2017/03/31/15/34/cactus-2191647_1280.jpg");
+  background-repeat: repeat;
+  background-size: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.title{
-    margin-bottom: 20px;
+.title {
+  margin-bottom: 20px;
+  font-size: 40px;
 }
 
-#formulario{
-    width: 100vw;
-    height: 70vh;
-    padding-top: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+#formulario {
+  margin: 15vh 0 10vh 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(40px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-}
-
-label{
-    font-size: 30px;
-    margin-bottom: 10px;
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
-input{
-    height: 20px;
-    padding-left: 10px;
+.encabezados {
+  background-color: black;
+  color: white;
+}
+
+label {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+input {
+  height: 25px;
+  padding: 5px 10px 5px 10px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -45,49 +64,52 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.labelInput{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+.labelInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-select{
-    height: 24px;
-    font-size: 15px;
+select {
+  height: 29px;
+  font-size: 20px;
 }
-#btn{
-    margin-top: 20px;
-    padding: 5px;
-    width: 100px;
-    margin-left: 25%;
-    color: white;
-    font-size: 20px;
-    background-color: greenyellow;
+#btn {
+  margin: 20px 0 20px 0;
+  padding: 5px;
+  width: 100px;
+  margin-left: 25%;
+  color: white;
+  font-size: 20px;
+  background-color: rgb(111, 186, 0);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 0 0 10% 10%;
-  }
-  
-  th, td {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-  }
-
-  .btnEdit{
-      background-color: rgba(0, 128, 0, 0.797);
-      border-radius: 5px;
-      border: none;
-      padding: 5px;
-  }
-
-.btnRemove{
-    background-color: rgba(255, 0, 0, 0.749);
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 10% 0 10% 10%;
 }
 
+th,
+td {
+  border: 1px solid #37260c;
+  text-align: center;
+  padding: 8px;
+}
+
+.btnEdit {
+  background-color: rgba(0, 128, 0, 0.797);
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+.btnRemove {
+  background-color: rgba(255, 0, 0, 0.749);
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
